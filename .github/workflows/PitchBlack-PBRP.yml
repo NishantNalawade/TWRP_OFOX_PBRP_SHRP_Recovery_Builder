@@ -104,13 +104,12 @@ jobs:
 
     - name: Initialize repo
       run: |
-        mkdir workspace
-        cd workspace
-        echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
-        git config --global user.name "Nico170420"
-        git config --global user.email "b170420nc@gmail.com"
-        repo init --depth=1 -u https://github.com/mlm-games/manifest_pb.git -b ${{ github.event.inputs.MANIFEST_BRANCH }}
-      id: pwd
+        mkdir android-recovery
+         pushd android-recovery
+         git config --global user.name "Nico170420"
+         git config --global user.email "b170420nc@gmail.com"
+         repo init --depth=1 -u https://github.com/mlm-games/manifest_pb.git -b ${{ inputs.MANIFEST_BRANCH }}
+         popd
 
     - name: Repo Sync
       run: |
