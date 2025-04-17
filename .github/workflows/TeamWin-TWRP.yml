@@ -115,14 +115,12 @@ jobs:
         sudo ln -sf ~/bin/repo /usr/bin/repo
 
     - name: Initialize repo
-      run: |
-        mkdir workspace
-        cd workspace
-        echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
+      run: |  
+        mkdir android-recovery
+        cd android-recovery
         git config --global user.name "Nico170420"
         git config --global user.email "b170420nc@gmail.com"
         repo init --depth=1 -u  ${{ env.MANIFEST }} -b ${{ inputs.MANIFEST_BRANCH }}
-      id: pwd
 
     - name: Repo Sync
       run: |
